@@ -1,0 +1,80 @@
+<template>
+  <div class="h-screen min-h-screen w-full">
+    <nav class="bg-white flex w-full pt-6">
+      <div class="w-64">
+        <div class="flex justify-center items-center">
+          <img class="h-14" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Logo_Borma_Toserba.jpg" alt="Logo Borma">
+        </div>
+      </div>
+      <div class="flex-1">
+        <Menubar>
+          <template #start>
+            <Breadcrumb :model="breadcrumbs_items">
+            </Breadcrumb>
+          </template>
+          <template #end>
+            <Button @click="$router.push({ name: 'auth.login' })" label="Logout" severity="secondary" icon="pi pi-user"></Button>
+          </template>
+        </Menubar>
+      </div>
+    </nav>
+
+    <div class="flex mt-5 h-full w-full">
+      <aside class="w-64">
+        
+        <div class="card flex justify-center">
+          <Menu :model="sidebar_items" ></Menu>
+        </div>
+      </aside>
+
+      <main class="flex-1 bg-white p-3">
+        <div class="container">
+          <slot></slot>
+        </div>
+      </main>
+    </div>
+
+    <footer class="p-4 text-center">
+      &copy; 2025 Admin Borma. All rights reserved.
+    </footer>
+  </div>
+</template>
+<script>
+import { Menu } from 'primevue';
+import Menubar from 'primevue/menubar';
+import Breadcrumb from 'primevue/breadcrumb';
+import Button from 'primevue/button';
+
+import { ref } from 'vue';
+export default {
+  components: {
+    Menu,
+    Menubar,
+    Breadcrumb,
+    Button
+  },
+  data() {
+    return {
+      sidebar_items: ref([
+        {
+          label: 'Data Master',
+          items: [
+            { label: 'Toko', icon: 'pi pi-warehouse' , command: () => { this.$router.push({ name: 'admin.toko.index'}) } },
+            { label: 'Kassa', icon: 'pi pi-desktop' , command: () => { this.$router.push({ name: 'admin.kassa.index'}) }},
+            { label: 'Barang', icon: 'pi pi-list' , command: () => { this.$router.push({ name: 'admin.barang.index'}) }},
+          ]
+        },
+        {
+            label: 'Sistem Transaksi',
+            items: [
+              { label: 'Transaksi', icon: 'pi pi-receipt', command: () => { this.$router.push({ name: 'admin.transaksi.index'}) }},
+            ]
+        },
+      ]),
+      breadcrumbs_items : ref([
+          { label: 'Admin' },
+      ])
+    }
+  },
+}
+</script>
