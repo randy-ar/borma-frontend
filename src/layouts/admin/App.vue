@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen min-h-screen w-full">
-    <nav class="bg-white flex w-full pt-6">
+    <nav class="flex w-full pt-6">
       <div class="w-64">
         <div class="flex justify-center items-center">
           <img class="h-14" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Logo_Borma_Toserba.jpg" alt="Logo Borma">
@@ -10,6 +10,17 @@
         <Menubar>
           <template #start>
             <Breadcrumb :model="breadcrumbs_items">
+              <template #item="{ item, props }">
+                <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+                    <a :href="href" v-bind="props.action" @click="navigate">
+                        <span :class="[item.icon, 'text-color']" />
+                        <span class="text-primary font-semibold">{{ item.label }}</span>
+                    </a>
+                </router-link>
+                <a v-else :href="item.url" :target="item.target" v-bind="props.action">
+                    <span class="text-surface-700 dark:text-surface-0">{{ item.label }}</span>
+                </a>
+            </template>
             </Breadcrumb>
           </template>
           <template #end>
@@ -27,10 +38,8 @@
         </div>
       </aside>
 
-      <main class="flex-1 bg-white p-3">
-        <div class="container">
-          <slot></slot>
-        </div>
+      <main class="flex-1 p-3">
+        <slot></slot>
       </main>
     </div>
 
@@ -57,11 +66,17 @@ export default {
     return {
       sidebar_items: ref([
         {
+            label: 'Dashboard',
+            items: [
+              { label: 'Dashboard', icon: 'pi pi-chart-line', command: () => { this.$router.push({ name: 'admin'}) }},
+            ]
+        },
+        {
           label: 'Data Master',
           items: [
             { label: 'Toko', icon: 'pi pi-warehouse' , command: () => { this.$router.push({ name: 'admin.toko.index'}) } },
             { label: 'Kassa', icon: 'pi pi-desktop' , command: () => { this.$router.push({ name: 'admin.kassa.index'}) }},
-            { label: 'Barang', icon: 'pi pi-list' , command: () => { this.$router.push({ name: 'admin.barang.index'}) }},
+            { label: 'Barang', icon: 'pi pi-barcode' , command: () => { this.$router.push({ name: 'admin.barang.index'}) }},
           ]
         },
         {
@@ -71,10 +86,12 @@ export default {
             ]
         },
       ]),
-      breadcrumbs_items : ref([
-          { label: 'Admin' },
-      ])
     }
   },
+  computed: {
+    breadcrumbs_items() {
+      return this.$store.getters.breadcrumbs
+    }
+  }
 }
 </script>

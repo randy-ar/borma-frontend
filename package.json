@@ -13,12 +13,17 @@
     "@primevue/themes": "^4.2.5",
     "@tailwindcss/vite": "^4.0.1",
     "@vee-validate/zod": "^4.15.0",
+    "@vue/cli-service": "^5.0.8",
+    "axios": "^1.7.9",
+    "mixin": "^0.2.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.2.5",
+    "sweetalert2": "^11.15.10",
     "tailwindcss-primeui": "^0.4.0",
     "vee-validate": "^4.15.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
+    "vuex": "^4.0.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {

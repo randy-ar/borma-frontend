@@ -34,6 +34,11 @@ import Card from 'primevue/card';
 export default {
   components: {
     Card
+  },
+  mounted() {
+    this.$store.dispatch('setBreadcrumbs', [
+      {label: 'Admin', route: '/admin'},
+    ]);
   }
 }
 </script>

@@ -6,10 +6,14 @@ import { createApp } from 'vue'
 import App from './layouts/Index.vue'
 import router from './router'
 import PrimeVue from 'primevue/config';
+import mixin from './mixin';
+import store from './store';
 
 const app = createApp(App)
 
 app.use(router)
+app.use(store)
+app.mixin(mixin)
 app.use(PrimeVue, {
   theme: {
     preset: Aura,

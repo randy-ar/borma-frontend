@@ -4,7 +4,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/admin',
       name: 'admin',
       component: () => import('../views/admin/Index.vue'),
       meta: {
@@ -36,12 +36,46 @@ const router = createRouter({
       }
     },
     {
+      path: '/admin/barang/create',
+      name: 'admin.barang.create',
+      component: () => import('../views/admin/barang/Create.vue'),
+      meta: {
+        layout: 'admin-layout'
+      }
+    },
+    {
+      path: '/admin/barang/edit/:kode_barang',
+      name: 'admin.barang.edit',
+      component: () => import('../views/admin/barang/Edit.vue'),
+      meta: {
+        layout: 'admin-layout'
+      },
+      props: true
+    },
+    {
       path: '/admin/kassa',
       name: 'admin.kassa.index',
       component: () => import('../views/admin/kassa/Index.vue'),
       meta: {
         layout: 'admin-layout'
       }
+    },
+    {
+      path: '/admin/kassa/create',
+      name: 'admin.kassa.create',
+      component: () => import('../views/admin/kassa/Create.vue'),
+      meta: {
+        layout: 'admin-layout'
+      }
+    },
+    {
+      path: '/admin/kassa/edit/:kode_kassa',
+      name: 'admin.kassa.edit',
+      component: () => import('../views/admin/kassa/Edit.vue'),
+      meta: {
+        layout: 'admin-layout'
+      },
+      props: true
     },
     {
       path: '/admin/transaksi',
@@ -52,7 +86,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/home',
+      path: '/',
       name: 'home',
       component: () => import('../views/home/Index.vue'),
       meta: {

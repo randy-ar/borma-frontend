@@ -12,7 +12,7 @@
           </div>
           <div class="flex w-full flex-col gap-1">
               <InputText v-model="password" name="password" type="password" placeholder="Password" class="w-full"/>
-              <Message v-if="errors.username" :severity="errors.password?.severity">{{ errors.password }}</Message>
+              <Message v-if="errors.password" :severity="errors.password?.severity">{{ errors.password }}</Message>
           </div>
           <Button type="submit" severity="secondary" label="Submit"></Button>
         </form>
