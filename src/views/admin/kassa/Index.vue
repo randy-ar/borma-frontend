@@ -2,7 +2,7 @@
   <div class="container">
     <div class="flex justify-between items-center">
       <h1 class="text-4xl mb-6">Data Kassa</h1>
-      <Button rounded icon="pi pi-plus" label="Tambah" severity="contrast" @click="$router.push({ name: 'admin.kassa.create' })"></Button>
+      <Button icon="pi pi-plus" label="Tambah" severity="contrast" @click="$router.push({ name: 'admin.kassa.create' })"></Button>
     </div>
     <Message v-if="session === 'success'" severity="success" class="mb-5" @click="resetSession">{{ message }}</Message>
     <Message v-if="session === 'failed'" severity="error" class="mb-5" @click="resetSession">{{ message }}</Message>

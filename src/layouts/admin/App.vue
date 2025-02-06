@@ -24,7 +24,7 @@
             </Breadcrumb>
           </template>
           <template #end>
-            <Button @click="$router.push({ name: 'auth.login' })" label="Logout" severity="secondary" icon="pi pi-user"></Button>
+            <Button @click="$router.push({ name: 'auth.login' })" label="Logout" severity="contrast" icon="pi pi-user"></Button>
           </template>
         </Menubar>
       </div>
@@ -38,14 +38,14 @@
         </div>
       </aside>
 
-      <main class="flex-1 p-3">
+      <main class="flex-1 p-3  mb-32">
         <slot></slot>
       </main>
     </div>
 
-    <footer class="p-4 text-center">
+    <!-- <footer class="p-4 text-center">
       &copy; 2025 Admin Borma. All rights reserved.
-    </footer>
+    </footer> -->
   </div>
 </template>
 <script>

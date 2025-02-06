@@ -4,7 +4,10 @@ export default new vuex.Store({
   state: {
     breadcrumbs: [],
     session: '',
-    message: ''
+    message: '',
+    currentTransaksi: {
+      kode_transaksi: ''
+    }
   },
   mutations: {
     setBreadcrumbs(state, data){
@@ -14,6 +17,9 @@ export default new vuex.Store({
       state.session = data.session;
       state.message = data.message;
     },
+    setCurrentTransaksi(state, data){
+      state.currentTransaksi = data;
+    }
   },
   getters: {
     breadcrumbs(state){
@@ -24,6 +30,9 @@ export default new vuex.Store({
     },
     message(state){
       return state.message;
+    },
+    currentTransaksi(state){
+      return state.currentTransaksi;
     }
   },
   actions: {
@@ -32,6 +41,9 @@ export default new vuex.Store({
     },
     setSession(context, data){
       context.commit('setSession', data);
+    },
+    setTransaksi(context, data){
+      context.commit('setTransaksi', data);
     }
   },
 })

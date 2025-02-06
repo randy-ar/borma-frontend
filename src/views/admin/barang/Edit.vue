@@ -31,7 +31,7 @@
             </div>
           </div>
            <div class="flex justify-end">
-            <Button rounded severity="contrast" type="submit" class="px-6" label="Simpan" icon="pi pi-save" :loading="loading" />
+            <Button severity="contrast" type="submit" class="px-6" label="Simpan" icon="pi pi-save" :loading="loading" />
           </div>
         </form>
       </template>

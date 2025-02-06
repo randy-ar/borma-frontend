@@ -86,6 +86,23 @@ const router = createRouter({
       }
     },
     {
+      path: '/admin/transaksi/create',
+      name: 'admin.transaksi.create',
+      component: () => import('../views/admin/transaksi/Create.vue'),
+      meta: {
+        layout: 'admin-layout'
+      }
+    },
+    {
+      path: '/admin/transaksi/edit/',
+      name: 'admin.transaksi.edit',
+      component: () => import('../views/admin/transaksi/Edit.vue'),
+      meta: {
+        layout: 'admin-layout'
+      },
+      props: true
+    },
+    {
       path: '/',
       name: 'home',
       component: () => import('../views/home/Index.vue'),
