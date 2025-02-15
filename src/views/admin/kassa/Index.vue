@@ -10,7 +10,7 @@
       <DataTable :value="kassa" tableStyle="min-width: 50rem" class="mb-3">
         <Column field="no" header="#"></Column>
         <Column field="kode_kassa" header="Kode Kassa"></Column>
-        <Column field="nama" header="Nama Kassa"></Column>
+        <Column field="nama_kassa" header="Nama Kassa"></Column>
         <Column class="w-18 !text-end" header="Edit">
           <template #body="{ data }">
               <router-link :to="{ name: 'admin.kassa.edit', params: { kode_kassa: data.kode_kassa } }">

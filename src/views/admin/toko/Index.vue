@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="flex justify-end">
-          <Button severity="contrast" type="submit" label="Search" icon="pi pi-save" :loading="loading" />
+          <Button severity="contrast" type="submit" label="Simpan" icon="pi pi-save" :loading="loading" />
         </div>
         </form>
       </template>
@@ -82,6 +82,12 @@ export default {
   },
   created(){
     this.fetchTokoFirst();
+  },
+  mounted(){
+    this.$store.dispatch('setBreadcrumbs', [
+      {label: 'Admin', route: '/admin'},
+      {label: 'Toko', route: '/admin/toko'}
+    ]);
   },
   methods: {
     async fetchTokoFirst(){

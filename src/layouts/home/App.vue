@@ -4,7 +4,7 @@
       <div class="flex-1">
         <Menubar>
           <template #end>
-            <Button @click="$router.push({ name: 'auth.login' })" label="Login" severity="secondary" icon="pi pi-user"></Button>
+            <Button @click="$router.push({ name: 'auth.login' })" label="Login" severity="contrast" icon="pi pi-user"></Button>
           </template>
         </Menubar>
       </div>

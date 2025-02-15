@@ -7,10 +7,18 @@
     <Message v-if="session === 'success'" severity="success" class="mb-5" @click="resetSession">{{ message }}</Message>
     <Message v-if="session === 'failed'" severity="error" class="mb-5" @click="resetSession">{{ message }}</Message>
     <div class="card">
+      <div class="grid grid-cols-12 gap-4">
+        <div class="col-span-12 mb-6">
+          <InputGroup>
+            <Button @click="fetchBarang" icon="pi pi-search" severity="secondary"/>
+              <InputText @keyup.enter="fetchBarang" v-model="search" placeholder="Cari Barang" />
+            </InputGroup>
+        </div>
+      </div>
       <DataTable :value="barang" tableStyle="min-width: 50rem" class="mb-3">
         <Column field="no" header="#"></Column>
         <Column field="kode_barang" header="Kode Barang"></Column>
-        <Column field="nama" header="Nama Barang"></Column>
+        <Column field="nama_barang" header="Nama Barang"></Column>
         <Column field="harga_formated" header="Harga Barang"></Column>
         <Column class="w-18 !text-end" header="Edit">
           <template #body="{ data }">
@@ -39,16 +47,20 @@ import axios from 'axios';
 import Button from 'primevue/button';
 import Pagination from '../../../components/Pagination.vue';
 import Swal from 'sweetalert2';
+import InputGroup from 'primevue/inputgroup';
+import InputText from 'primevue/inputtext';
+import InputGroupAddon from 'primevue/inputgroupaddon';
 
 export default {
   components: {
-    Message, DataTable, Column, ColumnGroup, Row, Button, Pagination
+    Message, DataTable, Column, ColumnGroup, Row, Button, Pagination, InputGroup, InputText, InputGroupAddon
   },
   data(){
     return {
       barang: [],
       pagination : {},
-      limit: 5
+      limit: 5,
+      search: '',
     }
   },
   mounted(){
@@ -62,7 +74,7 @@ export default {
   },
   methods: {
     fetchBarang(request = {}){
-      request.page = request.page || 1;
+      request.cari = this.search;
       axios.get('http://localhost:5000/api/barang/paginate?' + new URLSearchParams(request))
       .then(res => res.data)
       .then(res => {

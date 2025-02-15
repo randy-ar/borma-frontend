@@ -16,10 +16,10 @@
             </div>
             <div class="my-5">
               <FloatLabel>
-                <InputText fluid id="nama" v-model="kassa.nama" ref="nama"/>
-                <label for="nama">Nama Kassa</label>
+                <InputText fluid id="nama_kassa" v-model="kassa.nama_kassa" ref="nama_kassa"/>
+                <label for="nama_kassa">Nama Kassa</label>
               </FloatLabel>
-              <Message v-if="errors.nama" severity="error">{{ errors.nama }}</Message>
+              <Message v-if="errors.nama_kassa" severity="error">{{ errors.nama_kassa }}</Message>
             </div>
           </div>
           <div class="flex justify-end">
@@ -48,7 +48,7 @@ export default {
     return {
       kassa: {
         kode_kassa: '',
-        nama: ''
+        nama_kassa: ''
       },
       loading: false,
       errors: {}
@@ -71,7 +71,7 @@ export default {
       .then(res => {
         this.kassa = res.data;
         this.$refs.kode_kassa.value = this.kassa.kode_kassa;
-        this.$refs.nama.value = this.kassa.nama;
+        this.$refs.nama_kassa.value = this.kassa.nama_kassa;
       }).catch(err => {
         this.alert(err);
       });

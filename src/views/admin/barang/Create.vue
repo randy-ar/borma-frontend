@@ -16,10 +16,10 @@
             </div>
             <div class="my-5">
               <FloatLabel>
-                <InputText fluid id="nama" v-model="barang.nama"/>
-                <label for="nama">Nama Barang</label>
+                <InputText fluid id="nama_barang" v-model="barang.nama_barang"/>
+                <label for="nama_barang">Nama Barang</label>
               </FloatLabel>
-              <Message v-if="errors.nama" severity="error">{{ errors.nama }}</Message>
+              <Message v-if="errors.nama_barang" severity="error">{{ errors.nama_barang }}</Message>
             </div>
             <div class="mb-5 col-span-2">
               <FloatLabel>
@@ -54,7 +54,7 @@ export default {
     return {
       barang: {
         kode_barang: '',
-        nama: '',
+        nama_barang: '',
         harga: ''
       },
       loading: false

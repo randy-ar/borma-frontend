@@ -8,11 +8,13 @@ import router from './router'
 import PrimeVue from 'primevue/config';
 import mixin from './mixin';
 import store from './store';
+import VueApexCharts from 'vue3-apexcharts';
 
 const app = createApp(App)
 
 app.use(router)
 app.use(store)
+app.use(VueApexCharts)
 app.mixin(mixin)
 app.use(PrimeVue, {
   theme: {

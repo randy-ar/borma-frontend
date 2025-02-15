@@ -38,7 +38,6 @@
               <div class="mb-1">Kembalian</div>
               <div class="mb-1 text-right">{{ transaksi.kembalian_formatted }}</div>
             </div>
-            {{ transaksi.kode_barang }}
           </div>
         </template>
       </Card>
